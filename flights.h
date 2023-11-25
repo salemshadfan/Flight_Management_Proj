@@ -10,7 +10,7 @@ class Flight
 {
 private:
     vector<Passenger> passengerListM;
-    string flightNumM;
+    std::string flightNumM;
     int numOfRowsM;
     int seatsPerRowM;
 
@@ -18,14 +18,14 @@ public:
     Flight();
     ~Flight();
 
-    readDataFromFile(const string &textFile); // making the assumption that the info in the file is valid
-    displaySeatMap();
-    displayPassengerInformation();
-    addPassenger();
-    removePassenger();
-    saveDataToFile(const string &textFile);
+    void readDataFromFile(const std::string &textFile); // making the assumption that the info in the file is valid
+    void displaySeatMap();
+    void displayPassengerInformation();
+    void addPassenger(const std::string& fName, const std::string& lName, const std::string& phone, int row, char seat);
+    void removePassenger(int id);
+    void saveDataToFile(const std::string &textFile);
 
-    string getFlightNum() const;
+    std::string getFlightNum() const;
     int getNumOfRows() const;
     int getSeatsPerRow() const;
-}
+};

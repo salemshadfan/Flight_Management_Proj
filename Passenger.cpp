@@ -51,7 +51,7 @@ int Passenger::getRow() const
     return seatPtrM->getRow();
 }
 
-char Passenger::getCol() const
+int Passenger::getCol() const
 {
     return seatPtrM->getCol();
 }
