@@ -4,7 +4,7 @@
 #include <string>
 #include <iomanip>
 
-#include "flights.h"
+#include "Flight.h"
 using namespace std;
 
 // define constants
