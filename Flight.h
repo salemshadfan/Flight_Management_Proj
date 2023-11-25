@@ -28,4 +28,4 @@ public:
     string getFlightNum() const;
     int getNumOfRows() const;
     int getSeatsPerRow() const;
-}
+};
