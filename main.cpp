@@ -67,7 +67,7 @@ int main()
                 break;
             }
             case 5: {
-                flight.saveDataToFile("flight_info.txt");
+                flight.saveDataToFile(flightInfo);
                 break;
             }
             case 6: {

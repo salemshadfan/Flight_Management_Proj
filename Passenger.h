@@ -9,22 +9,22 @@ class Passenger
 {
 private:
     Seat *seatPtrM;
-    string fNameM;
-    string lNameM;
-    string phoneNumM;
-    string idM;
+    std::string fNameM;
+    std::string lNameM;
+    std::string phoneNumM;
+    std::string idM;
 
 public:
-    Passenger(string fName, string lName, string phoneNum, string id, int row, int col);
+    Passenger(std::string fName, std::string lName, std::string phoneNum, std::string id, int row, int col);
     ~Passenger();
 
     Passenger(const Passenger &src);
     Passenger &operator=(const Passenger &rhs);
 
-    string getFirstName() const;
-    string getLastName() const;
-    string getPhoneNum() const;
-    string getId() const;
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    std::string getPhoneNum() const;
+    std::string getId() const;
     int getRow() const;
     int getCol() const;
 };
