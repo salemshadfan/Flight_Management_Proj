@@ -21,11 +21,11 @@ public:
     readDataFromFile(const string &textFile); // making the assumption that the info in the file is valid
     displaySeatMap();
     displayPassengerInformation();
-    addPassenger();
-    removePassenger();
+    addPassenger(const string& fName, const string& lName, const string& phone, int row, char seat);
+    removePassenger(int id);
     saveDataToFile(const string &textFile);
 
     string getFlightNum() const;
     int getNumOfRows() const;
     int getSeatsPerRow() const;
-}
+};
