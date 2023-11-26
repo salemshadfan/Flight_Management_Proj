@@ -35,7 +35,6 @@ void Flight::readDataFromFile(const string &textFile) {
             flightNumM = flightNum;
             numOfRowsM = numOfRows;
             seatsPerRowM = seatsPerRow;
-            cout<< passengerListM[1][1].getFirstName()<<endl;
             passengerListM.resize(numOfRowsM, vector<Passenger>(seatsPerRow));
         } else {
             string firstName, lastName, phone, seatInfo, id;
