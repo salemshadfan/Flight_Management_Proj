@@ -3,7 +3,6 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-
 #include "flights.h"
 using namespace std;
 
@@ -43,24 +42,26 @@ int main()
                 break;
             }
             case 3: {
-                string fName, lName, phone;
+                string fName, lName, phone,id;
                 int row;
                 char seat;
-                cout << "Enter the passenger first name: ";
+                cout << "Enter the passenger's first name: ";
                 cin >> fName;
-                cout << "Enter the passenger last name: ";
+                cout << "Enter the passenger's last name: ";
                 cin >> lName;
-                cout << "Enter the passenger phone number: ";
+                cout << "Enter the passenger's phone number: ";
                 cin >> phone;
+                cout << "Enter the passenger's ID: ";
+                cin >> id;
                 cout << "Enter the passenger's desired row: ";
                 cin >> row;
                 cout << "Enter the passenger's desired seat (A-F): ";
                 cin >> seat;
-                flight.addPassenger(fName, lName, phone, row, seat);
+                flight.addPassenger(fName, lName, phone, id ,  row, seat);
                 break;
             }
             case 4: {
-                int id;
+                string id;
                 cout << "Enter the ID of the passenger to be removed: ";
                 cin >> id;
                 flight.removePassenger(id);
@@ -80,7 +81,6 @@ int main()
         }
 
     } while (choice != 6);
-
     return 0;
   
 }

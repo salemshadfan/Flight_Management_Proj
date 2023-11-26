@@ -10,6 +10,11 @@ Passenger::~Passenger()
     delete seatPtrM;
 }
 
+Passenger::Passenger()
+{
+
+}
+
 Passenger::Passenger(const Passenger &src)
     : fNameM(src.fNameM), lNameM(src.lNameM), phoneNumM(src.phoneNumM), idM(src.idM)
 {

@@ -16,6 +16,7 @@ private:
 
 public:
     Passenger(std::string fName, std::string lName, std::string phoneNum, std::string id, int row, int col);
+    Passenger();
     ~Passenger();
 
     Passenger(const Passenger &src);
