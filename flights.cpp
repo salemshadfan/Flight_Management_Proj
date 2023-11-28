@@ -61,24 +61,17 @@ void Flight::readDataFromFile(const std::string &textFile) {
 
 void Flight::displaySeatMap() {
     cout << "Aircraft Seat Map" << endl;
-    cout << "  A B C D E F" << endl;
+    cout << "  A   B   C   D   E   F" << endl;
     cout << "+---+---+---+---+---+---+" << endl;
 
     for (int i = 0; i < numOfRowsM; ++i) {
-        if (i < 10) {
-            cout << i << " ";
-        } else {
-            cout << i;
-        }
-        cout << "|";
+        cout << i + 1 << "|";
         for (int j = 0; j < seatsPerRowM; ++j) {
-            cout << " ";
-            if (!seatMap[i][j]->getId().empty()) {
-                cout << "X";
+            if (seatMap[i][j] != nullptr) {
+                cout << " X |"; 
             } else {
-                cout << " ";
+                cout << "   |"; 
             }
-            cout << " |";
         }
         cout << endl;
         cout << "+---+---+---+---+---+---+" << endl;
@@ -107,22 +100,21 @@ void Flight::displayPassengerInformation() {
     }
 }
 
-
-    
 void Flight::addPassenger(const string& fName, const string& lName, const string& phone, const string& id, int row, char seat) {
-    int col = seat - 'A'+ 1;
-    if (row < 0 || row > numOfRowsM || col < 0 || col > seatsPerRowM) {
+    int col = seat - 'A' + 1;
+    if (row < 1 || row > numOfRowsM || col < 0 || col >= seatsPerRowM) {
         cout << "Invalid seat position." << endl;
         return;
     }
    
-    if (row > 0 && col >= 0 && row <= numOfRowsM && col < seatsPerRowM && seatMap[row - 1][col] != nullptr) {
+    if (seatMap[row - 1][col] != nullptr) {
         cout << "Seat " << seat << " in row " << row << " is already occupied." << endl;
         return;
     }
+    
     Passenger newPassenger(fName, lName, phone, id, row, col);
     passengerListM.push_back(newPassenger);
-    seatMap[row][col] = &passengerListM.back();
+    seatMap[row - 1][col] = &passengerListM.back();
 }
 
 
