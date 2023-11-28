@@ -10,21 +10,29 @@ Passenger::~Passenger()
     delete seatPtrM;
 }
 
+Passenger::Passenger()
+{
+
+}
+
 Passenger::Passenger(const Passenger &src)
     : fNameM(src.fNameM), lNameM(src.lNameM), phoneNumM(src.phoneNumM), idM(src.idM)
 {
     seatPtrM = new Seat(src.getRow(), src.getCol());
 }
 
-Passenger &Passenger::operator=(const Passenger &rhs)
-{
-    if (this != &rhs)
-    {
-        seatPtrM->setRow(rhs.getRow());
-        seatPtrM->setCol(rhs.getCol());
+Passenger &Passenger::operator=(const Passenger &rhs) {
+    if (this != &rhs) {
+        delete seatPtrM;
+        seatPtrM = new Seat(rhs.getRow(), rhs.getCol());
+        fNameM = rhs.fNameM;
+        lNameM = rhs.lNameM;
+        phoneNumM = rhs.phoneNumM;
+        idM = rhs.idM;
     }
     return *this;
 }
+
 
 string Passenger::getFirstName() const
 {

@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 
+#ifndef PASS_H
+#define PASS_H
+
 #include "Seat.h"
 
 using namespace std;
@@ -16,6 +19,7 @@ private:
 
 public:
     Passenger(std::string fName, std::string lName, std::string phoneNum, std::string id, int row, int col);
+    Passenger();
     ~Passenger();
 
     Passenger(const Passenger &src);
@@ -28,3 +32,5 @@ public:
     int getRow() const;
     int getCol() const;
 };
+
+#endif
