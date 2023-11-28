@@ -32,6 +32,7 @@ public:
     std::string getFlightNum() const;
     int getNumOfRows() const;
     int getSeatsPerRow() const;
+
 };
 
 #endif
