@@ -114,26 +114,23 @@ void Flight::addPassenger(const string& fName, const string& lName, const string
 }
 
 
-void Flight::removePassenger(const string& id) {
-    cout<< "test" << endl;
-    for (int i = 1; i < numOfRowsM; ++i) {
-        for (int j = 1; j < seatsPerRowM; ++j) {
-            if (seatMap[i-1][j-1] != nullptr) {
-                if(seatMap[i-1][j-1]->getId() == id){
-                    cout<< i << "space" << j << endl;
-                    seatMap[i-1][j-1] = nullptr;
-                }
-            }
+
+void Flight::removePassenger(const std::string& id) {
+    for (int i = 0; i < passengerListM.size(); ++i) {
+        cout<< passengerListM[i].getId() << endl;
+        if (passengerListM[i].getId() == id) {
+            int row = passengerListM[i].getRow() - 1;
+            int col = passengerListM[i].getCol() - 1;
+            seatMap[row][col] = nullptr;
+            passengerListM.erase(passengerListM.begin() + i);
+            cout << "Passenger with ID " << id << " removed successfully." << endl;
+            return;
         }
     }
 
-    for (size_t i = 0; i < passengerListM.size(); ++i) {
-        if (passengerListM[i].getId() == id) {
-            passengerListM.erase(passengerListM.begin() + i);
-            break;
-        }
-    }
+    cout << "Passenger with ID " << id << " not found." << endl;
 }
+
 
 void Flight::saveDataToFile(const string &textFile) {
     ofstream file(textFile);
