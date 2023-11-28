@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 
+#ifndef PASS_H
+#define PASS_H
+
 #include "Seat.h"
 
 using namespace std;
@@ -29,3 +32,5 @@ public:
     int getRow() const;
     int getCol() const;
 };
+
+#endif

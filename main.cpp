@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-#include "flights.h"  
+ 
 #include "main.h"
 using namespace std;
 
@@ -38,7 +38,9 @@ int main() {
     display_header();
 
     Flight flight;
+    Airline airline;
     populate_flight_from_file(flight);
+    airline.addFlight(flight);
 
     int choice;
     do {

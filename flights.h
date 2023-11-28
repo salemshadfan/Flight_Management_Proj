@@ -2,6 +2,9 @@
 #include <vector>
 #include <string>
 
+#ifndef FL_H
+#define FL_H
+
 #include "Passenger.h"
 
 using namespace std;
@@ -9,7 +12,8 @@ using namespace std;
 class Flight
 {
 private:
-    vector<vector<Passenger>> passengerListM;
+    vector<Passenger> passengerListM;
+    vector<vector<Passenger*>> seatMap;
     std::string flightNumM;
     int numOfRowsM;
     int seatsPerRowM;
@@ -29,3 +33,5 @@ public:
     int getNumOfRows() const;
     int getSeatsPerRow() const;
 };
+
+#endif
