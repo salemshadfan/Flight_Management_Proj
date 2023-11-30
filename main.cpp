@@ -3,7 +3,8 @@
 #include <vector>
 #include <string>
 #include <iomanip>
- 
+#include <cctype>
+
 #include "main.h"
 using namespace std;
 
@@ -59,6 +60,7 @@ int main() {
                 string fName, lName, phone,id;
                 int row;
                 char seat;
+                bool validInput = false;
                 cout << "Enter the passenger's first name: ";
                 cin >> fName;
                 cout << "Enter the passenger's last name: ";
@@ -67,11 +69,30 @@ int main() {
                 cin >> phone;
                 cout << "Enter the passenger's ID: ";
                 cin >> id;
-                cout << "Enter the passenger's desired row: ";
-                cin >> row;
+                while (!validInput) {
+                    cout << "Enter the passenger's desired row: ";
+                    string rowInput;
+                    cin >> rowInput;
+
+                    validInput = true;
+                    for (char c : rowInput) {
+                        if (!isdigit(c)) {
+                            validInput = false;
+                            cout << "Please enter a valid integer for the row: ";
+                            break;
+                        }
+                    }
+
+                    if (validInput) {
+                        row = stoi(rowInput);
+                        break; 
+                    }
+
+                    cin.clear(); 
+                }
                 cout << "Enter the passenger's desired seat (A-F): ";
                 cin >> seat;
-                flight.addPassenger(fName, lName, phone, id ,  row, seat);
+                flight.addPassenger(fName, lName, phone, id , row, seat);
                 break;
             }
             case 4: {
@@ -82,7 +103,12 @@ int main() {
                 break;
             }
             case 5: {
-                flight.saveDataToFile(flightInfo);
+                char YorN;
+                cout << "Do you want to save the data in the ""flight_info.txt""? Please answer <Y or N> ";
+                cin >> YorN;
+                if(YorN == 'Y'){
+                    flight.saveDataToFile(flightInfo);
+                }
                 break;
             }
             case 6: {
