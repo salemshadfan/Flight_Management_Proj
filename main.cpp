@@ -10,11 +10,17 @@ using namespace std;
 
 const string flightInfo = "flight_info.txt";
 
+void pressReturnToContinue() {
+    cin.clear();
+    cin.get();
+}
+
 void display_header() {
     cout << "Version: 1.0" << endl;
     cout << "Term Project - Flight Management Program in C++" << endl;
     cout << "Produced by: Salem, Tara, Asher" << endl;
     cout << "Year: 2023" << endl;
+    cout << "\n<<<Press Return to Continue>>>" << endl;
 }
 
 void populate_flight_from_file(Flight &flight) {
@@ -45,9 +51,17 @@ int main() {
 
     int choice;
     do {
-        choice = menu();
+        cout << "<<<Press Return to Continue>>>" << endl;
+        pressReturnToContinue();
 
+        choice = menu();
+        do{
+            pressReturnToContinue();
+
+        }while(false);
+       
         switch (choice) {
+
             case 1:{
                 flight.displaySeatMap();
                 break;
@@ -108,7 +122,10 @@ int main() {
                 cin >> YorN;
                 if(YorN == 'Y'){
                     flight.saveDataToFile(flightInfo);
+                } else if(YorN != 'N') {
+                    cout <<"Invalid Choice"<<endl;
                 }
+                pressReturnToContinue();
                 break;
             }
             case 6: {
@@ -117,6 +134,8 @@ int main() {
             }
             default:
                 cout << "Invalid choice. Please enter a number between 1 and 6." << endl;
+                pressReturnToContinue();
+
                 break;
         }
 
