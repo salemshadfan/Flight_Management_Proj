@@ -6,15 +6,11 @@
 
 using namespace std;
 
-
-
-
 Flight::Flight() : numOfRowsM(0), seatsPerRowM(0) {
 }
 
 Flight::~Flight() {
 }
-
 
 void Flight::readDataFromFile(const std::string &textFile) {
     std::ifstream file(textFile);
