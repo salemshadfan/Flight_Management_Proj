@@ -93,6 +93,7 @@ void Flight::displayPassengerInformation() {
                   << std::setw(5) << passenger.getRow()
                   << std::setw(5) << static_cast<char>('A' + passenger.getCol() - 1)
                   << std::setw(6) << passenger.getId() << std::endl;
+                std::cout << "---------------------------------------------------------------" << std::endl;
     }
 }
 
