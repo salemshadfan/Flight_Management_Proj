@@ -1,21 +1,21 @@
 #include <string>
 #include <vector>
-#include "airline.h"
+
+#include "Airline.h"
 
 using namespace std;
 
-
-Airline::Airline(){
+Airline::Airline()
+{
     airlineName = "";
 }
 
-
-Airline::~Airline(){
-   
+Airline::~Airline()
+{
 }
 
-
-void Airline::addFlight(const Flight& flight){
+void Airline::addFlight(const Flight &flight)
+{
     flights.push_back(flight);
     airlineName = flight.getFlightNum();
 }
