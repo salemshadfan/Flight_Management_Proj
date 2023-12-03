@@ -12,7 +12,6 @@ Passenger::~Passenger()
 
 Passenger::Passenger()
 {
-
 }
 
 Passenger::Passenger(const Passenger &src)
@@ -21,8 +20,10 @@ Passenger::Passenger(const Passenger &src)
     seatPtrM = new Seat(src.getRow(), src.getCol());
 }
 
-Passenger &Passenger::operator=(const Passenger &rhs) {
-    if (this != &rhs) {
+Passenger &Passenger::operator=(const Passenger &rhs)
+{
+    if (this != &rhs)
+    {
         delete seatPtrM;
         seatPtrM = new Seat(rhs.getRow(), rhs.getCol());
         fNameM = rhs.fNameM;
@@ -32,7 +33,6 @@ Passenger &Passenger::operator=(const Passenger &rhs) {
     }
     return *this;
 }
-
 
 string Passenger::getFirstName() const
 {

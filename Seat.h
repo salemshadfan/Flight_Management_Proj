@@ -1,8 +1,10 @@
 #include <iostream>
 
 using namespace std;
+
 #ifndef SEAT_H
 #define SEAT_H
+
 class Seat
 {
 private:
