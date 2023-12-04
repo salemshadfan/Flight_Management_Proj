@@ -134,13 +134,13 @@ void Flight::addPassenger()
     bool validInput = false;
 
     std::cout << "\nEnter the passenger's first name: ";
-    std::cin >> fName;
+    std::getline(std::cin, fName);
 
     std::cout << "Enter the passenger's last name: ";
-    std::cin >> lName;
+    std::getline(std::cin, lName);
 
     std::cout << "Enter the passenger's phone number: ";
-    std::cin >> phone;
+    std::getline(std::cin, phone);
 
     // std::cout << "Enter the passenger's ID: ";
     // std::cin >> id;
@@ -149,7 +149,7 @@ void Flight::addPassenger()
     do {
         idExists = false;
         cout << "Enter the passenger's ID: ";
-        cin >> id;
+        std::getline(std::cin, id);
 
         for (const Passenger& passenger : passengerListM) {
             if (passenger.getId() == id) {
@@ -165,7 +165,7 @@ void Flight::addPassenger()
     {
         std::cout << "Enter the passenger's desired row: ";
         string rowInput;
-        std::cin >> rowInput;
+        std::getline(std::cin, rowInput);
 
         validInput = true;
         for (char c : rowInput)
@@ -228,7 +228,7 @@ void Flight::removePassenger(const std::string &id)
 {
     for (int i = 0; i < passengerListM.size(); ++i)
     {
-        std::cout << "\nChecking ID: " << passengerListM[i].getId() << "-" << id << endl;
+
         if (passengerListM[i].getId() == id)
         {
             int row = passengerListM[i].getRow() - 1;
