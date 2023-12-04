@@ -60,30 +60,37 @@ void Flight::readDataFromFile(const std::string &textFile)
     file.close();
 }
 
-void Flight::displaySeatMap()
-{
-    std::cout << "\n    Aircraft Seat Map" << endl;
-    std::cout << "  A   B   C   D   E   F" << endl;
-    std::cout << "+---+---+---+---+---+---+" << endl;
+void Flight::displaySeatMap() {
+    int maxRow = (numOfRowsM >= 10) ? 2 : 1;
 
-    for (int i = 0; i < numOfRowsM; ++i)
-    {
-        std::cout << i + 1 << "|";
-        for (int j = 0; j < seatsPerRowM; ++j)
-        {
-            if (seatMap[i][j] != nullptr)
-            {
-                std::cout << " X |";
-            }
-            else
-            {
-                std::cout << "   |";
+    cout << "Aircraft Seat Map" << endl;
+    cout << string(maxRow + 1, ' ');
+    for (char c = 'A'; c < 'A' + seatsPerRowM; ++c) {
+        cout << "  " << c << " ";
+    }
+    cout << endl;
+    cout << string(maxRow, ' ') << " +";
+    for (int i = 0; i < seatsPerRowM; ++i) {
+        cout << "---+";
+    }
+    cout << endl;
+
+    for (int i = 0; i < numOfRowsM; ++i) {
+        cout << left << setw(maxRow + 1) << (i + 1) << "|";
+        for (int j = 0; j < seatsPerRowM; ++j) {
+            if (seatMap[i][j] != nullptr) {
+                cout << " X |";
+            } else {
+                cout << "   |";
             }
         }
-        std::cout << endl;
-        std::cout << "+---+---+---+---+---+---+" << endl;
+        cout << endl;
+        cout << string(maxRow, ' ') << " +";
+        for (int k = 0; k < seatsPerRowM; ++k) {
+            cout << "---+";
+        }
+        cout << endl;
     }
-    std::cout << endl;
 }
 
 void Flight::displayPassengerInformation()
@@ -135,8 +142,24 @@ void Flight::addPassenger()
     std::cout << "Enter the passenger's phone number: ";
     std::cin >> phone;
 
-    std::cout << "Enter the passenger's ID: ";
-    std::cin >> id;
+    // std::cout << "Enter the passenger's ID: ";
+    // std::cin >> id;
+
+    bool idExists;
+    do {
+        idExists = false;
+        cout << "Enter the passenger's ID: ";
+        cin >> id;
+
+        for (const Passenger& passenger : passengerListM) {
+            if (passenger.getId() == id) {
+                idExists = true;
+                std::cin.clear();
+                cout << "ID already exists. Please enter a different ID." << endl;
+                break;
+            }
+        }
+    } while (idExists);
 
     do
     {
@@ -175,13 +198,13 @@ void Flight::addPassenger()
     do
     {
         validInput = true;
-        std::cout << "Enter the passenger's desired seat (A-F): ";
+        std::cout << "Enter the passenger's desired seat: ";
         std::cin >> seat;
         std::cout << endl;
         int col = seat - 'A' + 1;
         if (col < 0 || col > (seatsPerRowM + 1))
         {
-            std::cout << "Invalid seat position. Please enter a seat between A and F.\n"
+            std::cout << "Invalid seat position. Please enter a valid seat.\n"
                       << endl;
             validInput = false;
         }
